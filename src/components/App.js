@@ -13,6 +13,7 @@ import { handleGetUsers } from "../actions/users";
 import { connect } from "react-redux";
 import { LeaderBoard } from "./LeaderBoard";
 import { NewQuestion } from "./NewQuestion";
+import { login } from "../actions/login";
 
 class App extends Component {
   componentDidMount() {
@@ -41,7 +42,7 @@ class App extends Component {
                   <PrivateRoute path="/question/:id" component={HomePage} />
                   <PrivateRoute
                     key={location.name}
-                    path="/new"
+                    path="/add"
                     component={NewQuestion}
                   />
                   <Route component={NotFound} />

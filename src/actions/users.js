@@ -9,6 +9,9 @@ export function getUsers(users) {
   };
 }
 
+/*
+  This retrieves a list of users and then dispatch the getUser action
+ */
 export function handleGetUsers() {
   return (dispatch) => {
     return _getUsers().then((users) => {

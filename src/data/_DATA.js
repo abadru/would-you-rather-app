@@ -23,6 +23,7 @@ let users = {
   },
   johndoe: {
     id: "johndoe",
+    name: "John Doe",
     avatarURL: "https://tylermcginnis.com/would-you-rather/dan.jpg",
     answers: {
       xj352vofupe1dqz9emx13r: "optionOne",

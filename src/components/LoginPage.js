@@ -16,18 +16,19 @@ const LoginPage = (props) => {
   const { dispatch, users } = props;
 
   const listUsers = Object.keys(users).map((i) => {
-    return { key: users[i].id, text: users[i].name, value: users[i].name };
+    return { key: users[i].id, text: users[i].name, value: users[i].id };
   });
 
   const doLogin = (userId) => {
     dispatch(login(userId));
-    dispatch(closeModal());
+
     props.history.push("/home");
   };
   return (
     <div className="container">
       <FinalForm
         onSubmit={(values) => {
+          console.log(values);
           doLogin(values.user);
         }}
         validate={validate}
@@ -52,6 +53,7 @@ const LoginPage = (props) => {
               options={listUsers}
               name="user"
               placeholder="Users"
+              value={listUsers}
             />
 
             <Button

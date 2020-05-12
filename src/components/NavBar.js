@@ -5,20 +5,24 @@ import { connect } from "react-redux";
 import { logout } from "../actions/login";
 
 const NavBar = (props) => {
-  const { user, dispatch } = props;
+  const { userId, dispatch, users } = props;
   return (
     <Menu fixed="top" inverted>
       <Container>
         <Menu.Item header>Would You Rather</Menu.Item>
         <Menu.Item name="Home" as={NavLink} to="/home" />
         <Menu.Item>
-          <Button as={NavLink} to="/new" positive content="New Question" />
+          <Button as={NavLink} to="/add" positive content="New Question" />
         </Menu.Item>
         <Menu.Item name="Leaderboard" as={NavLink} to="/leaderboard" />
 
         <Menu.Item position="right">
-          <Image avatar spaced="right" src={"/assets/user.png"} />
-          <Dropdown pointing="top left" text={user}>
+          <Image
+            avatar
+            spaced="right"
+            src={(users && users[userId].avatarURL) || "/assets/user.png"}
+          />
+          <Dropdown pointing="top left" text={users[userId].name}>
             <Dropdown.Menu>
               <Dropdown.Item
                 text="Logout"
@@ -36,9 +40,10 @@ const NavBar = (props) => {
   );
 };
 
-function mapStateToProps({ login }) {
+function mapStateToProps({ login, users }) {
   return {
-    user: login.userId,
+    userId: login.userId,
+    users,
   };
 }
 
