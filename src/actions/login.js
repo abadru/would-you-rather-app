@@ -1,8 +1,15 @@
-export const SET_CURRENT_LOGGED_IN_USER = "SET_CURRENT_LOGGED_IN_USER";
+export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";
 
-export function setCurrentLoggedInUser(id) {
+export function login(id) {
   return {
-    type: SET_CURRENT_LOGGED_IN_USER,
+    type: LOGIN,
     id,
+  };
+}
+
+export function logout() {
+  return {
+    type: LOGOUT,
   };
 }

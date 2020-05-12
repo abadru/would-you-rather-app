@@ -3,9 +3,10 @@ import { Form as FinalForm, Field } from "react-final-form";
 import { Form, Button, Header } from "semantic-ui-react";
 import { combineValidators, isRequired } from "revalidate";
 import { connect } from "react-redux";
-import { setCurrentLoggedInUser } from "../actions/login";
+import { login } from "../actions/login";
 import SelectInput from "./common/form/SelectInput";
-import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import { closeModal } from "../actions/modal";
 
 const validate = combineValidators({
   user: isRequired("user"),
@@ -19,48 +20,51 @@ const LoginPage = (props) => {
   });
 
   const doLogin = (userId) => {
-    dispatch(setCurrentLoggedInUser(userId));
-    return <Redirect to="/home" />;
+    dispatch(login(userId));
+    dispatch(closeModal());
+    props.history.push("/home");
   };
   return (
-    <FinalForm
-      onSubmit={(values) => {
-        doLogin(values.user);
-      }}
-      validate={validate}
-      render={({
-        handleSubmit,
-        submitting,
-        submitError,
-        invalid,
-        pristine,
-        dirtySinceLastSubmit,
-      }) => (
-        <Form onSubmit={handleSubmit} error>
-          <Header
-            as="h2"
-            content="Login to Would You Rather"
-            color="teal"
-            textAlign="center"
-          />
+    <div className="container">
+      <FinalForm
+        onSubmit={(values) => {
+          doLogin(values.user);
+        }}
+        validate={validate}
+        render={({
+          handleSubmit,
+          submitting,
+          submitError,
+          invalid,
+          pristine,
+          dirtySinceLastSubmit,
+        }) => (
+          <Form onSubmit={handleSubmit} error>
+            <Header
+              as="h2"
+              content="Login to Would You Rather"
+              color="teal"
+              textAlign="center"
+            />
 
-          <Field
-            component={SelectInput}
-            options={listUsers}
-            name="user"
-            placeholder="Users"
-          />
+            <Field
+              component={SelectInput}
+              options={listUsers}
+              name="user"
+              placeholder="Users"
+            />
 
-          <Button
-            disabled={(invalid && !dirtySinceLastSubmit) || pristine}
-            loading={submitting}
-            color="teal"
-            content="Login"
-            fluid
-          />
-        </Form>
-      )}
-    />
+            <Button
+              disabled={(invalid && !dirtySinceLastSubmit) || pristine}
+              loading={submitting}
+              color="teal"
+              content="Login"
+              fluid
+            />
+          </Form>
+        )}
+      />
+    </div>
   );
 };
 
@@ -70,4 +74,4 @@ function mapStateToProps({ users }) {
   };
 }
 
-export default connect(mapStateToProps)(LoginPage);
+export default withRouter(connect(mapStateToProps)(LoginPage));

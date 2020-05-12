@@ -1,10 +1,15 @@
-import { SET_CURRENT_LOGGED_IN_USER } from "../actions/login";
+import { LOGIN, LOGOUT } from "../actions/login";
 
 export default function loginReducer(state = null, action) {
   switch (action.type) {
-    case SET_CURRENT_LOGGED_IN_USER:
+    case LOGIN:
       return {
         userId: action.id,
+        userName: "",
+      };
+    case LOGOUT:
+      return {
+        userId: "",
         userName: "",
       };
     default:

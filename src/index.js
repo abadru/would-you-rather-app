@@ -10,6 +10,7 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./reducers";
 import middleware from "./middleware";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 export const history = createBrowserHistory();
 
@@ -18,7 +19,9 @@ const store = createStore(reducer, middleware);
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <App />
+      <ScrollToTop>
+        <App />
+      </ScrollToTop>
     </Router>
   </Provider>,
   document.getElementById("root")
