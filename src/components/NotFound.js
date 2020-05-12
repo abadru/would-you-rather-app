@@ -7,7 +7,7 @@ const NotFound = () => {
     <Segment placeholder>
       <Header icon>
         <Icon name="search" />
-        Oops - we've looked everywhere but couldn't find this.
+        Oops - we've looked everywhere but couldn't find this. (404)
       </Header>
       <Segment.Inline>
         <Button as={Link} to="/" primary>

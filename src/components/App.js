@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import { LeaderBoard } from "./LeaderBoard";
 import { NewQuestion } from "./NewQuestion";
 import { login } from "../actions/login";
+import QuestionDetail from "./QuestionDetail";
 
 class App extends Component {
   componentDidMount() {
@@ -39,7 +40,10 @@ class App extends Component {
                     path="/leaderboard"
                     component={LeaderBoard}
                   />
-                  <PrivateRoute path="/question/:id" component={HomePage} />
+                  <PrivateRoute
+                    path="/question/:id"
+                    component={QuestionDetail}
+                  />
                   <PrivateRoute
                     key={location.name}
                     path="/add"
