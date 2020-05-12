@@ -11,7 +11,7 @@ const Question = (props) => {
       <Card.Content>
         <Image
           floated="right"
-          size="mini"
+          size="small"
           src={users[question.author].avatarURL}
         />
         <Card.Header>{users[question.author].name}</Card.Header>
