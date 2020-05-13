@@ -21,6 +21,9 @@ export const addQuestion = (question) => {
   };
 };
 
+/*
+  This action save a new question and dispatch actions required to update questions state as well as users state
+ */
 export function handleAddQuestion(optionOneText, optionTwoText) {
   return (dispatch, getState) => {
     const { login } = getState();
@@ -65,6 +68,10 @@ export const saveQuestionAnswer = (authedUser, qid, answer) => {
   };
 };
 
+/*
+  This action save an answer ensuring tha the app state is in sync with the new answer. both question and user sate are
+  updated
+ */
 export function handleSaveQuestionAnswer(qid, option) {
   return (dispatch, getState) => {
     const { login } = getState();
@@ -81,6 +88,9 @@ export function handleSaveQuestionAnswer(qid, option) {
   };
 }
 
+/*
+  Dispatched when selecting a question
+ */
 export const selectQuestion = (question) => {
   return {
     type: SELECT_QUESTION,

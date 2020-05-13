@@ -6,8 +6,6 @@ import NavBar from "./NavBar";
 import { Container } from "semantic-ui-react";
 import PrivateRoute from "./PrivateRoute";
 import NotFound from "./NotFound";
-import { ToastContainer } from "react-toastify";
-import ModalContainer from "./common/modals/ModalContainer";
 import LoginPage from "./LoginPage";
 import { handleGetUsers } from "../actions/users";
 import { connect } from "react-redux";
@@ -25,8 +23,6 @@ class App extends Component {
     return (
       <Fragment>
         <LoadingBar />
-        <ModalContainer />
-        <ToastContainer position="bottom-right" />
         <Route exact path="/" component={LoginPage} />
         <Route
           path={"/(.+)"}

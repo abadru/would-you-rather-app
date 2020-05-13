@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import { login } from "../actions/login";
 import SelectInput from "./common/form/SelectInput";
 import { withRouter } from "react-router-dom";
-import { closeModal, openModal } from "../actions/modal";
 
 const validate = combineValidators({
   user: isRequired("user"),

@@ -1,6 +1,11 @@
 import React from "react";
 import { Form, Label, Select } from "semantic-ui-react";
 
+/*
+    This is a reusable select control that has a label to display an error, if any. It is based on the Select component
+    from semantic-ui-react.
+ */
+
 const SelectInput = ({
   input,
   width,

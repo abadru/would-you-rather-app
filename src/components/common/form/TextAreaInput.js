@@ -1,6 +1,8 @@
 import React from "react";
-import { FieldRenderProps } from "react-final-form";
-import { FormFieldProps, Form, Label } from "semantic-ui-react";
+import { Form, Label } from "semantic-ui-react";
+/*
+    This is a reusable text area control that has a label to display an error, if any.
+ */
 
 const TextAreaInput = ({
   input,

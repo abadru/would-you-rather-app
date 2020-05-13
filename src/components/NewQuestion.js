@@ -6,7 +6,6 @@ import {
   Grid,
   Divider,
   Header,
-  Icon,
 } from "semantic-ui-react";
 
 import { Form as FinalForm, Field } from "react-final-form";

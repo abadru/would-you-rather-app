@@ -1,6 +1,9 @@
 import React from "react";
 import { Form, Label } from "semantic-ui-react";
-
+/*
+    This is a reusable text input control that has a label to display an error, if any. Created based on
+    semantic-ui-react form field.
+ */
 const TextInput = ({
   input,
   width,

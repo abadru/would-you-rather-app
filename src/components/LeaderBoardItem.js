@@ -14,7 +14,7 @@ const LeaderBoardItem = (props) => {
       <Card.Content>
         <Image
           floated="right"
-          size="medium"
+          size="mini"
           src={user.avatarURL || "/assets/user.png"}
         />
         <Card.Header>{user.name}</Card.Header>

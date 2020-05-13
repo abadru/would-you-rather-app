@@ -11,7 +11,7 @@ class HomePage extends Component {
   }
 
   render() {
-    const { questions, answeredQuestions, unansweredQuestions } = this.props;
+    const { answeredQuestions, unansweredQuestions } = this.props;
 
     const panes = [
       {
@@ -74,7 +74,6 @@ function mapStateToProps({ questions, login, users }) {
   );
 
   return {
-    questions: allQuestions,
     answeredQuestions: myAnswered,
     unansweredQuestions: notAnswered,
   };

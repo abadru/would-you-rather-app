@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import NotFound from "./NotFound";
@@ -14,7 +14,7 @@ class QuestionDetail extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    const { questions, dispatch, users } = this.props;
+    const { questions, dispatch } = this.props;
 
     const question = questions[id];
 
