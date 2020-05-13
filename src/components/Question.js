@@ -19,7 +19,7 @@ const Question = (props) => {
         <Card.Description>
           Asks <strong>would you rather</strong>
           <br />
-          <p>{question.optionOne.text.substring(0, 20)} ...</p>
+          <p>...{question.optionOne.text.substring(0, 20)} ...</p>
         </Card.Description>
       </Card.Content>
       <Card.Content extra>

@@ -56,3 +56,7 @@ body {
 }
 
 /*end home page styles*/
+
+.selected-option {
+    background-color: #61dafb;
+}

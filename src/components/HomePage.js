@@ -18,6 +18,9 @@ class HomePage extends Component {
         menuItem: "Unanswered Questions",
         render: () => (
           <Tab.Pane>
+            {unansweredQuestions && unansweredQuestions.length === 0 && (
+              <p>You have not unanswered questions</p>
+            )}
             {unansweredQuestions.map((question) => (
               <Question key={question.id} question={question} />
             ))}
@@ -28,6 +31,9 @@ class HomePage extends Component {
         menuItem: "Answered Question",
         render: () => (
           <Tab.Pane>
+            {answeredQuestions && answeredQuestions.length === 0 && (
+              <p>You have not answered any question</p>
+            )}
             {answeredQuestions.map((question) => (
               <Question key={question.id} question={question} />
             ))}

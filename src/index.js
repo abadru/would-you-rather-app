@@ -5,6 +5,7 @@ import App from "./components/App";
 import { createBrowserHistory } from "history";
 import { Router } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import { createStore } from "redux";
 import { Provider } from "react-redux";
