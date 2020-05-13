@@ -17,8 +17,8 @@ import { handleAddQuestion } from "../actions/questions";
 import TextInput from "./common/form/TextInput";
 
 const validate = combineValidators({
-  optionOne: isRequired({ message: "The option one required" }),
-  optionTwo: isRequired({ message: "The option two required" }),
+  optionOne: isRequired({ message: "The option one is required" }),
+  optionTwo: isRequired({ message: "The option two is required" }),
 });
 
 const NewQuestion = (props) => {
