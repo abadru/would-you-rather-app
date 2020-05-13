@@ -4,6 +4,7 @@ import {
   _saveQuestion,
   _saveQuestionAnswer,
 } from "../data/_DATA";
+import { addUserQuestion } from "./users";
 
 export const ADD_QUESTION = "ADD_QUESTION";
 export const GET_QUESTIONS = "GET_QUESTIONS";
@@ -20,21 +21,20 @@ export const addQuestion = (question) => {
   };
 };
 
-export const handleAddQuestion = (optionOneText, optionTwoText) => {
+export function handleAddQuestion(optionOneText, optionTwoText) {
   return (dispatch, getState) => {
     const { login } = getState();
-
-    dispatch(showLoading());
-
+    const { userId } = login;
     return _saveQuestion({
       optionOneText,
       optionTwoText,
-      author: login.userId,
-    })
-      .then((question) => dispatch(addQuestion(question)))
-      .then(() => dispatch(hideLoading()));
+      author: userId,
+    }).then((question) => {
+      dispatch(addQuestion(question));
+      dispatch(addUserQuestion(userId, question.id));
+    });
   };
-};
+}
 
 /*
     This action creator is for fetching questions
@@ -56,9 +56,11 @@ export const handleGetQuestions = () => {
   };
 };
 
-export const saveQuestionAnswer = (answer) => {
+export const saveQuestionAnswer = (authedUser, qid, answer) => {
   return {
     type: SAVE_ANSWER,
+    authedUser,
+    qid,
     answer,
   };
 };
@@ -66,15 +68,19 @@ export const saveQuestionAnswer = (answer) => {
 export const handleSaveQuestionAnswer = (qid, answer) => {
   return (dispatch, getState) => {
     const { login } = getState();
+    const { userId } = login;
 
     dispatch(showLoading());
 
     return _saveQuestionAnswer({
       qid,
       answer,
-      authedUser: login.userId,
+      authedUser: userId,
     })
-      .then((answer) => dispatch(saveQuestionAnswer(answer)))
+      .then((answer) => {
+        console.log("Response", answer);
+        dispatch(saveQuestionAnswer(userId, qid, answer));
+      })
       .then(() => dispatch(hideLoading()));
   };
 };

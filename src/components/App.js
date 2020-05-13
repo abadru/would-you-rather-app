@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import { LeaderBoard } from "./LeaderBoard";
 import QuestionDetail from "./QuestionDetail";
 import NewQuestion from "./NewQuestion";
+import { LoadingBar } from "react-redux-loading";
 
 class App extends Component {
   componentDidMount() {
@@ -23,6 +24,7 @@ class App extends Component {
     const { location, isLoggedIn } = this.props;
     return (
       <Fragment>
+        <LoadingBar />
         <ModalContainer />
         <ToastContainer position="bottom-right" />
         <Route exact path="/" component={LoginPage} />
