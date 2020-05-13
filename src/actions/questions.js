@@ -4,7 +4,7 @@ import {
   _saveQuestion,
   _saveQuestionAnswer,
 } from "../data/_DATA";
-import { addUserQuestion } from "./users";
+import { addUserQuestion, saveUserAnswer } from "./users";
 
 export const ADD_QUESTION = "ADD_QUESTION";
 export const GET_QUESTIONS = "GET_QUESTIONS";
@@ -65,25 +65,21 @@ export const saveQuestionAnswer = (authedUser, qid, answer) => {
   };
 };
 
-export const handleSaveQuestionAnswer = (qid, answer) => {
+export function handleSaveQuestionAnswer(qid, option) {
   return (dispatch, getState) => {
     const { login } = getState();
     const { userId } = login;
-
-    dispatch(showLoading());
-
-    return _saveQuestionAnswer({
-      qid,
-      answer,
+    const info = {
       authedUser: userId,
-    })
-      .then((answer) => {
-        console.log("Response", answer);
-        dispatch(saveQuestionAnswer(userId, qid, answer));
-      })
-      .then(() => dispatch(hideLoading()));
+      qid,
+      answer: option,
+    };
+    _saveQuestionAnswer(info).then(() => {
+      dispatch(saveQuestionAnswer(userId, qid, option));
+      dispatch(saveUserAnswer(userId, qid, option));
+    });
   };
-};
+}
 
 export const selectQuestion = (question) => {
   return {
