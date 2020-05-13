@@ -63,7 +63,14 @@ class QuestionDetail extends Component {
                 <hr />
                 <FinalForm
                   onSubmit={() => {
-                    this.onSubmitAnswer(selectedQuestion.id, this.state.value);
+                    if (this.state.hasOwnProperty("value")) {
+                      this.onSubmitAnswer(
+                        selectedQuestion.id,
+                        this.state.value
+                      );
+                    } else {
+                      alert("Choose one option");
+                    }
                   }}
                   render={({ handleSubmit, invalid, pristine }) => (
                     <Form onSubmit={handleSubmit}>
@@ -105,7 +112,9 @@ class QuestionDetail extends Component {
                           primary
                           color="green"
                           disabled={
-                            answer === "optionOne" || answer === "optionTwo"
+                            answer === "optionOne" ||
+                            answer === "optionTwo" ||
+                            !this.state.hasOwnProperty("value")
                           }
                         >
                           Submit
