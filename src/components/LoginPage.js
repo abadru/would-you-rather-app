@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Form as FinalForm, Field } from "react-final-form";
 import { Form, Button, Header } from "semantic-ui-react";
 import { combineValidators, isRequired } from "revalidate";
@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { login } from "../actions/login";
 import SelectInput from "./common/form/SelectInput";
 import { withRouter } from "react-router-dom";
-import { closeModal } from "../actions/modal";
+import { closeModal, openModal } from "../actions/modal";
 
 const validate = combineValidators({
   user: isRequired("user"),
@@ -21,52 +21,60 @@ const LoginPage = (props) => {
 
   const doLogin = (userId) => {
     dispatch(login(userId));
-
     props.history.push("/home");
   };
   return (
-    <div className="container">
-      <FinalForm
-        onSubmit={(values) => {
-          console.log(values);
-          doLogin(values.user);
-        }}
-        validate={validate}
-        render={({
-          handleSubmit,
-          submitting,
-          submitError,
-          invalid,
-          pristine,
-          dirtySinceLastSubmit,
-        }) => (
-          <Form onSubmit={handleSubmit} error>
-            <Header
-              as="h2"
-              content="Login to Would You Rather"
-              color="teal"
-              textAlign="center"
-            />
+    <Fragment>
+      <div className="container">
+        <div id="login-wrapper">
+          <div className="login-title">
+            <h1>Welcome to Would you rather game</h1>
+          </div>
 
-            <Field
-              component={SelectInput}
-              options={listUsers}
-              name="user"
-              placeholder="Users"
-              value={listUsers}
-            />
+          <div className="container">
+            <FinalForm
+              onSubmit={(values) => {
+                doLogin(values.user);
+              }}
+              validate={validate}
+              render={({
+                handleSubmit,
+                submitting,
+                submitError,
+                invalid,
+                pristine,
+                dirtySinceLastSubmit,
+              }) => (
+                <Form onSubmit={handleSubmit} error>
+                  <Header
+                    as="h2"
+                    content="Select a user to login"
+                    color="teal"
+                    textAlign="center"
+                  />
 
-            <Button
-              disabled={(invalid && !dirtySinceLastSubmit) || pristine}
-              loading={submitting}
-              color="teal"
-              content="Login"
-              fluid
+                  <Field
+                    component={SelectInput}
+                    options={listUsers}
+                    name="user"
+                    placeholder="Users"
+                    value={listUsers}
+                  />
+
+                  <Button
+                    disabled={(invalid && !dirtySinceLastSubmit) || pristine}
+                    loading={submitting}
+                    color="teal"
+                    content="Login"
+                    fluid
+                  />
+                </Form>
+              )}
             />
-          </Form>
-        )}
-      />
-    </div>
+          </div>
+        </div>
+      </div>
+    </Fragment>
   );
 };
 

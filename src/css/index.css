@@ -64,3 +64,16 @@ body {
 .no-option {
     background-color: #fff;
 }
+
+#login-wrapper {
+    max-width: 800px;
+    padding-bottom: 200px;
+    /*margin: 20px auto;*/
+}
+
+
+
+
+.login-title {
+    text-align: center;
+}
