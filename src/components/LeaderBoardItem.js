@@ -14,7 +14,7 @@ const LeaderBoardItem = (props) => {
       <Card.Content>
         <Image
           floated="right"
-          size="mini"
+          size="small"
           src={user.avatarURL || "/assets/user.png"}
         />
         <Card.Header>{user.name}</Card.Header>
@@ -23,7 +23,7 @@ const LeaderBoardItem = (props) => {
             Asked Questions = <strong>{asked}</strong>
           </p>
           <p>
-            Answered Questions =<strong>{answered}</strong>
+            Answered Questions = <strong>{answered}</strong>
           </p>
         </Card.Description>
       </Card.Content>
