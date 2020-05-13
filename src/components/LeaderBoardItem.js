@@ -12,7 +12,11 @@ const LeaderBoardItem = (props) => {
   return (
     <Card fluid>
       <Card.Content>
-        <Image floated="right" size="medium" src={user.avatarURL} />
+        <Image
+          floated="right"
+          size="medium"
+          src={user.avatarURL || "/assets/user.png"}
+        />
         <Card.Header>{user.name}</Card.Header>
         <Card.Description>
           <p>

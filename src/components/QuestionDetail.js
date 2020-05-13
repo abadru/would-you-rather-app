@@ -49,7 +49,9 @@ class QuestionDetail extends Component {
               <Image
                 floated="right"
                 size="mini"
-                src={users[selectedQuestion.author].avatarURL}
+                src={
+                  users[selectedQuestion.author].avatarURL || "/assets/user.png"
+                }
               />
               <Card.Header>
                 {users[selectedQuestion.author].name} asks
@@ -121,7 +123,9 @@ class QuestionDetail extends Component {
                     <Card.Content>
                       <div
                         className={
-                          answer === "optionOne" ? "selected-option" : "noption"
+                          answer === "optionOne"
+                            ? "selected-option"
+                            : "no-option"
                         }
                       >
                         <p>
@@ -133,7 +137,7 @@ class QuestionDetail extends Component {
                         />
                         <p>
                           <strong>
-                            {votesOption2} out of {total} votes
+                            {votesOption1} out of {total} votes
                           </strong>
                         </p>
                       </div>
@@ -148,7 +152,7 @@ class QuestionDetail extends Component {
                         className={
                           answer === "optionTwo"
                             ? "selected-option"
-                            : "nooption"
+                            : "no-option"
                         }
                       >
                         <p>

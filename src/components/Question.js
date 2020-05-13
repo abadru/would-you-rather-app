@@ -12,7 +12,7 @@ const Question = (props) => {
         <Image
           floated="right"
           size="small"
-          src={users[question.author].avatarURL}
+          src={users[question.author].avatarURL || "/assets/user.png"}
         />
         <Card.Header>{users[question.author].name}</Card.Header>
         <Card.Meta>@{users[question.author].id}</Card.Meta>

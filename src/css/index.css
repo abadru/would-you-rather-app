@@ -60,3 +60,7 @@ body {
 .selected-option {
     background-color: #61dafb;
 }
+
+.no-option {
+    background-color: #fff;
+}
