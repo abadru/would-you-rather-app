@@ -11,10 +11,10 @@ import ModalContainer from "./common/modals/ModalContainer";
 import LoginPage from "./LoginPage";
 import { handleGetUsers } from "../actions/users";
 import { connect } from "react-redux";
-import { LeaderBoard } from "./LeaderBoard";
 import QuestionDetail from "./QuestionDetail";
 import NewQuestion from "./NewQuestion";
 import { LoadingBar } from "react-redux-loading";
+import LeaderBoard from "./LeaderBoard";
 
 class App extends Component {
   componentDidMount() {
