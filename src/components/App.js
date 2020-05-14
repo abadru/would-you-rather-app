@@ -13,10 +13,11 @@ import QuestionDetail from "./QuestionDetail";
 import NewQuestion from "./NewQuestion";
 import { LoadingBar } from "react-redux-loading";
 import LeaderBoard from "./LeaderBoard";
+import { handleInitialData } from "../actions/shared";
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleGetUsers());
+    this.props.handleInitialData();
   }
   render() {
     const { location, isLoggedIn } = this.props;
@@ -64,4 +65,12 @@ function mapStateToProps({ login }) {
   };
 }
 
-export default withRouter(connect(mapStateToProps)(App));
+function mapDispatchToProps(dispatch) {
+  return {
+    handleInitialData: () => {
+      dispatch(handleInitialData());
+    },
+  };
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

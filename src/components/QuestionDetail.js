@@ -2,28 +2,16 @@ import * as React from "react";
 import { withRouter } from "react-router-dom";
 import { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import NotFound from "./NotFound";
-import { handleSaveQuestionAnswer, selectQuestion } from "../actions/questions";
+import { handleSaveQuestionAnswer } from "../actions/questions";
 import { Button, Card, Image, Radio, Form, Divider } from "semantic-ui-react";
 import { Form as FinalForm } from "react-final-form";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import PropTypes from "prop-types";
+import NotFound from "./NotFound";
 
 class QuestionDetail extends Component {
   state = {};
   handleChange = (e, { value }) => this.setState({ value });
-
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    const { questions, dispatch } = this.props;
-
-    const question = questions[id];
-
-    if (!question) {
-      return <NotFound />;
-    }
-
-    dispatch(selectQuestion(question));
-  }
 
   onSubmitAnswer(qid, answer) {
     this.props.dispatch(handleSaveQuestionAnswer(qid, answer));
@@ -40,6 +28,10 @@ class QuestionDetail extends Component {
       votesOption1,
       votesOption2,
     } = this.props;
+
+    if (!this.props.selectedQuestion) {
+      return <NotFound />;
+    }
 
     return (
       <Fragment>
@@ -193,8 +185,11 @@ function formatNumber(x) {
   return Number.parseFloat(x).toFixed(2);
 }
 
-function mapStateToProps({ questions, users, selectedQuestion, login }) {
+function mapStateToProps({ questions, users, login }, { match }) {
   const { userId } = login;
+  const { id } = match.params;
+
+  const selectedQuestion = questions[id];
 
   //First get the answers for the current logged in users
   const answers = users[userId].answers;

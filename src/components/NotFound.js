@@ -15,7 +15,7 @@ const NotFound = () => {
       </Header>
       <Segment.Inline>
         <Button as={Link} to="/" primary>
-          Login to Would You Rather Home Page
+          Login to Would You Rather
         </Button>
       </Segment.Inline>
     </Segment>

@@ -9,7 +9,6 @@ import { addUserQuestion, saveUserAnswer } from "./users";
 export const ADD_QUESTION = "ADD_QUESTION";
 export const GET_QUESTIONS = "GET_QUESTIONS";
 export const SAVE_ANSWER = "SAVE_ANSWER";
-export const SELECT_QUESTION = "SELECT_QUESTION";
 
 /*
     This action creator is for creating new question and it passes the new question as a payload
@@ -87,13 +86,3 @@ export function handleSaveQuestionAnswer(qid, option) {
     });
   };
 }
-
-/*
-  Dispatched when selecting a question
- */
-export const selectQuestion = (question) => {
-  return {
-    type: SELECT_QUESTION,
-    question,
-  };
-};
