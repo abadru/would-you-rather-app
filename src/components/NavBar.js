@@ -2,7 +2,7 @@ import React from "react";
 import { Menu, Container, Button, Dropdown, Image } from "semantic-ui-react";
 import { NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { handleLogout, logout } from "../actions/login";
+import { handleLogout } from "../actions/login";
 
 const NavBar = (props) => {
   const { userId, dispatch, users } = props;

@@ -6,7 +6,6 @@ import { handleSaveQuestionAnswer } from "../actions/questions";
 import { Button, Card, Image, Radio, Form, Divider } from "semantic-ui-react";
 import { Form as FinalForm } from "react-final-form";
 import ProgressBar from "react-bootstrap/ProgressBar";
-import PropTypes from "prop-types";
 import NotFound from "./NotFound";
 
 class QuestionDetail extends Component {

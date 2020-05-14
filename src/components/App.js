@@ -7,7 +7,6 @@ import { Container } from "semantic-ui-react";
 import PrivateRoute from "./PrivateRoute";
 import NotFound from "./NotFound";
 import LoginPage from "./LoginPage";
-import { handleGetUsers } from "../actions/users";
 import { connect } from "react-redux";
 import QuestionDetail from "./QuestionDetail";
 import NewQuestion from "./NewQuestion";
