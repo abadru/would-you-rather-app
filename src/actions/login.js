@@ -19,3 +19,13 @@ export function logout() {
     type: LOGOUT,
   };
 }
+
+export function handleLogout(dispatch, cb) {
+  dispatch(logout());
+  setTimeout(cb, 500);
+}
+
+export function handleLogin(id, dispatch, cb) {
+  dispatch(login(id));
+  setTimeout(cb, 500);
+}

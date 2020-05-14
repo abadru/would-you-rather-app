@@ -3,7 +3,7 @@ import { Form as FinalForm, Field } from "react-final-form";
 import { Form, Button, Header } from "semantic-ui-react";
 import { combineValidators, isRequired } from "revalidate";
 import { connect } from "react-redux";
-import { login } from "../actions/login";
+import { handleLogin, login } from "../actions/login";
 import SelectInput from "./common/form/SelectInput";
 import { Redirect, withRouter } from "react-router-dom";
 
@@ -18,11 +18,11 @@ class LoginPage extends Component {
 
   doLogin(userId) {
     if (userId) {
-      this.props.dispatch(login(userId));
-      this.setState(() => ({
-        redirectToReferrer: true,
-      }));
-      // props.history.push("/home");
+      handleLogin(userId, this.props.dispatch, () => {
+        this.setState(() => ({
+          redirectToReferrer: true,
+        }));
+      });
     } else {
       alert("Please select a user");
     }

@@ -2,7 +2,7 @@ import React from "react";
 import { Menu, Container, Button, Dropdown, Image } from "semantic-ui-react";
 import { NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { logout } from "../actions/login";
+import { handleLogout, logout } from "../actions/login";
 
 const NavBar = (props) => {
   const { userId, dispatch, users } = props;
@@ -28,8 +28,9 @@ const NavBar = (props) => {
                 text="Logout"
                 icon="power"
                 onClick={() => {
-                  dispatch(logout());
-                  props.history.push("/");
+                  handleLogout(dispatch, () => {
+                    props.history.push("/");
+                  });
                 }}
               />
             </Dropdown.Menu>
