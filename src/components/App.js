@@ -24,6 +24,7 @@ class App extends Component {
       <Fragment>
         <LoadingBar />
         <Route exact path="/" component={LoginPage} />
+        <Route exact path="/login" component={LoginPage} />
         <Route
           path={"/(.+)"}
           render={() => (
